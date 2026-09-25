@@ -1,0 +1,558 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "afcfd2ae-c2f7-4265-b565-dee48e8a365c")
+	(paper "A4")
+	(lib_symbols)
+	(wire
+		(pts
+			(xy 38.1 38.1) (xy 50.8 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1637dd4a-a573-48a4-bd94-2321d80031b8")
+	)
+	(wire
+		(pts
+			(xy 63.5 45.72) (xy 76.2 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2504723f-e80a-4894-aa5e-c0d3df5514c2")
+	)
+	(wire
+		(pts
+			(xy 63.5 48.26) (xy 76.2 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "26711241-fe73-44bd-a10f-2ed608bf7dd1")
+	)
+	(wire
+		(pts
+			(xy 63.5 30.48) (xy 76.2 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "284a0985-5097-4bde-9c2c-a336a697f1af")
+	)
+	(wire
+		(pts
+			(xy 38.1 40.64) (xy 50.8 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36832891-575b-4006-91c5-5bddf79baa3b")
+	)
+	(wire
+		(pts
+			(xy 38.1 30.48) (xy 50.8 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3bb8b309-e9c4-49a1-817f-4ebfd95f5849")
+	)
+	(wire
+		(pts
+			(xy 38.1 35.56) (xy 50.8 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5319eebc-20bb-4802-bbb4-47d713f97546")
+	)
+	(wire
+		(pts
+			(xy 38.1 33.02) (xy 50.8 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d7ba258-0018-4c99-a42b-4619a934af9b")
+	)
+	(wire
+		(pts
+			(xy 63.5 33.02) (xy 76.2 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "808264dd-c840-441a-a368-aa2de368c9eb")
+	)
+	(wire
+		(pts
+			(xy 38.1 27.94) (xy 50.8 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d6790170-2b17-4078-92ea-3cba3e6ae622")
+	)
+	(wire
+		(pts
+			(xy 63.5 27.94) (xy 76.2 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e22ddb5c-1e43-4017-9f70-62c735dd0aba")
+	)
+	(wire
+		(pts
+			(xy 63.5 35.56) (xy 76.2 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5aa2619-bdb3-457c-a456-33a83e959bb4")
+	)
+	(sheet
+		(at 101.6 25.4)
+		(size 12.7 3.81)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "06934739-dd29-4372-83f5-1117d7e4e08a")
+		(property "Sheetname" "Power"
+			(at 101.6 24.6884 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 101.6 29.7946 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Ethernet"
+				(path "/afcfd2ae-c2f7-4265-b565-dee48e8a365c"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 76.2 25.4)
+		(size 12.7 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "48cd0e62-d7bb-478a-b85d-16490f9d3fb1")
+		(property "Sheetname" "RJ45"
+			(at 76.2 24.6884 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "rj45.kicad_sch"
+			(at 76.2 51.3846 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "ACTLED" input
+			(at 76.2 45.72 180)
+			(uuid "8a5381bb-94ab-4a83-9f02-da69e7b37981")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LINKLED" input
+			(at 76.2 48.26 180)
+			(uuid "21eee6d6-bbe1-445c-a6c8-6a0da560f3dd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RXN" output
+			(at 76.2 30.48 180)
+			(uuid "db315aef-4bfe-4d5f-935d-e99c67c0dcc7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RXP" output
+			(at 76.2 27.94 180)
+			(uuid "04aa40d7-f4b4-432f-8665-a7dddb71d97c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "TXN" input
+			(at 76.2 35.56 180)
+			(uuid "7a95d9cc-0b07-4323-890a-8fa9f6ddb508")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "TXP" input
+			(at 76.2 33.02 180)
+			(uuid "a4d54654-5490-4820-aae3-10bf00a18112")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "Ethernet"
+				(path "/afcfd2ae-c2f7-4265-b565-dee48e8a365c"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 25.4 25.4)
+		(size 12.7 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "51b1c687-ddf8-4310-be87-a6d85f1b7612")
+		(property "Sheetname" "Connector"
+			(at 25.4 24.6884 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "connector.kicad_sch"
+			(at 25.4 51.3846 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "MISO" input
+			(at 38.1 27.94 0)
+			(uuid "aa4d5e83-6982-4b63-90c6-f9d50071ae89")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "MOSI" input
+			(at 38.1 30.48 0)
+			(uuid "573258cc-f6e4-4705-a717-b0e678982066")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "SCLK" input
+			(at 38.1 33.02 0)
+			(uuid "d6806558-e3fd-442f-8aab-c216b0651f2c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "~{INT}" input
+			(at 38.1 35.56 0)
+			(uuid "d2674150-8db1-42be-83ea-930ed6ea110d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "~{RST}" input
+			(at 38.1 38.1 0)
+			(uuid "7d7dd2fa-4b48-4e22-a5d4-70abfed7b01c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "~{SCS}" input
+			(at 38.1 40.64 0)
+			(uuid "d2afdb39-8fab-41da-b1a7-f8bac89b2b29")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "Ethernet"
+				(path "/afcfd2ae-c2f7-4265-b565-dee48e8a365c"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 50.8 25.4)
+		(size 12.7 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "c3cedbc2-14b0-42a5-9985-6c1576dc070b")
+		(property "Sheetname" "W5500"
+			(at 50.8 24.6884 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "w5500.kicad_sch"
+			(at 50.8 51.3846 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "MISO" input
+			(at 50.8 27.94 180)
+			(uuid "9013da73-265f-4714-b967-4208fe558301")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "MOSI" input
+			(at 50.8 30.48 180)
+			(uuid "e31af543-ed3b-4053-bf8a-2efa505f9a21")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RX+" input
+			(at 63.5 27.94 0)
+			(uuid "75a85e04-55db-4a6f-ae91-ef3caad7dfb5")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "RX-" input
+			(at 63.5 30.48 0)
+			(uuid "cdd3bd84-ec22-4d2d-80f6-0030b8279762")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "SCLK" input
+			(at 50.8 33.02 180)
+			(uuid "7df7bcdf-de57-4f48-8773-c19e7c7344e2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "TX+" output
+			(at 63.5 33.02 0)
+			(uuid "80f6dd81-0c8e-40e6-abae-ba16d36911bf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "TX-" output
+			(at 63.5 35.56 0)
+			(uuid "5229807a-2f77-4e8b-978a-15c49dad3f31")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "~{INT}" input
+			(at 50.8 35.56 180)
+			(uuid "ae321b73-168b-41ac-9d3d-85e40fd64f02")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "~{RST}" input
+			(at 50.8 38.1 180)
+			(uuid "a7bea43b-7d5a-4420-9afa-4ef90e3d7dc3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "~{SCS}" input
+			(at 50.8 40.64 180)
+			(uuid "b6ce9303-b6f0-4239-90ae-64c2800c4880")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "ACTLED" input
+			(at 63.5 45.72 0)
+			(uuid "05396d69-331a-4e21-a8e6-d36b7cab5336")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "LINKLED" input
+			(at 63.5 48.26 0)
+			(uuid "93f367c0-286b-485f-8a94-bccd65cf9f0d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "Ethernet"
+				(path "/afcfd2ae-c2f7-4265-b565-dee48e8a365c"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
