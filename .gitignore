@@ -1,0 +1,15 @@
+# KiCad autosave / project state
+# KiCad creates .history/ as its own embedded git repo. These must be matched
+# WITHOUT a trailing slash: git checks for a nested .git first and would
+# otherwise record them as gitlinks, and `git add` then fails with
+# "does not have a commit checked out".
+.history
+kicad/.history
+*.kicad_prl
+fp-info-cache
+*.lck
+/kicad/3dparts/build_halo_hfj11_model.py
+
+# Export scratch
+*.tmp
+*.bak

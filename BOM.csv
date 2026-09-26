@@ -1,0 +1,25 @@
+Designators,Value,Manufacturer Part Number,Manufacturer,Supplier,Supplier Link,Qty,Unit Price (USD),Extended Price (USD)
+"C1,C4,C6,C8,C10,C11,C13",0.1uF 50V X7R 0603,CL10B104KB8NNNC,Samsung Electro-Mechanics,LCSC,https://www.lcsc.com/product-detail/C1591.html,7,0.0088,0.0616
+"C9,C12",18pF 50V C0G 0603,0603N180J500CT,Union Semiconductor,LCSC,https://www.lcsc.com/product-detail/C123538.html,2,0.0069,0.0138
+"C5,C14",10nF 50V X7R 0603,CL10B103KB8NNNC,Samsung Electro-Mechanics,LCSC,https://www.lcsc.com/product-detail/C1589.html,2,0.0103,0.0206
+"C15,C17",6.8nF 50V X7R 0603,CL10B682JB8NNNC,Samsung Electro-Mechanics,LCSC,https://www.lcsc.com/product-detail/C307492.html,2,0.0075,0.0150
+C16,22nF 50V X7R 0603,CC0603KRX7R9BB223,Yageo,LCSC,https://www.lcsc.com/product-detail/C106222.html,1,0.0063,0.0063
+"C2,C3",10uF 10V X5R 0603,CL10A106KP8NNNC,Samsung Electro-Mechanics,LCSC,https://www.lcsc.com/product-detail/C19702.html,2,0.0322,0.0644
+C7,4.7uF 10V X5R 0603,CL10A475KP8NNNC,Samsung Electro-Mechanics,LCSC,https://www.lcsc.com/product-detail/C1705.html,1,0.0164,0.0164
+"D1,D2",LED red high-efficiency 0603,KT-0603R,KEYSTONE,LCSC,https://www.lcsc.com/product-detail/C2286.html,2,0.0076,0.0152
+FB1,Ferrite bead 120R at 100MHz 0603,CBW160808U121T,Sunlord,LCSC,https://www.lcsc.com/product-detail/C139175.html,1,0.0086,0.0086
+J1,RJ45 magjack 10/100 Base-T tab-down green/green LED,HFJ11-2450E-L11RL,HALO Electronics,DigiKey,https://www.digikey.com/en/products/detail/halo-electronics-inc/HFJ11-2450E-L11RL/25658121,1,5.2300,5.2300
+J2,Header 1x08 2.54mm vertical through-hole,2.54-1*8,generic,LCSC,https://www.lcsc.com/product-detail/C5156616.html,1,0.0442,0.0442
+R1,12.4k 1% 0603,0603WAF1242T5E,UniRoyal,LCSC,https://www.lcsc.com/product-detail/C22865.html,1,0.0015,0.0015
+"R9,R10",330R 1% 0603,0603WAF3300T5E,UniRoyal,LCSC,https://www.lcsc.com/product-detail/C23138.html,2,0.0026,0.0052
+"R2,R3",1k 1% 0603,0603WAF1001T5E,UniRoyal,LCSC,https://www.lcsc.com/product-detail/C21190.html,2,0.0026,0.0052
+"R4,R5,R6,R7",49.9R 1% 0603,RC0603FR-0749R9L,Yageo,LCSC,https://www.lcsc.com/product-detail/C114625.html,4,0.0062,0.0248
+R8,10R 1% 0603,0603WAF100JT5E,UniRoyal,LCSC,https://www.lcsc.com/product-detail/C22859.html,1,0.0032,0.0032
+RN1,0R jumper array 4 elements 0603x4 convex,4D03WGJ0000T5E,UniRoyal,LCSC,https://www.lcsc.com/product-detail/C1952.html,1,0.0090,0.0090
+U1,W5500 10/100 Ethernet SPI controller LQFP-48 7x7mm 0.5mm,W5500,WIZnet,LCSC,https://www.lcsc.com/product-detail/C32843.html,1,2.8503,2.8503
+X1,25MHz crystal CL=12pF 3225-4P,X322525MOB4SI,Yangxing Tech,LCSC,https://www.lcsc.com/product-detail/C9006.html,1,0.0954,0.0954
+,,,,,,,,
+"TOTAL parts per 1 board",,,,,,,,8.4907
+"TOTAL parts for 5 boards",,,,,,,,42.4535
+"PCB 50.0 x 21.4mm 4-layer FR-4 1.6mm HASL x5 (ESTIMATE - confirm in JLCPCB quote UI)","","","JLCPCB","","https://jlcpcb.com/","","",10.0000
+"GRAND TOTAL 5 boards parts + estimated PCB",,,,,,,,52.4535
