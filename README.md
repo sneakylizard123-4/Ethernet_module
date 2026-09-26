@@ -163,15 +163,10 @@ Ethernet/
 
 ## Known Issues
 
-- **The differential pairs are not length-matched, and the jack-side skew is too large.** Measured from the board file, P and N differ by 5.31 mm on the transmit pair between J1 and RN1 (13.53 mm vs 8.22 mm) and by 2.10 mm on the receive pair (9.10 mm vs 7.00 mm). The W5500-side segments past RN1 are well matched at 0.12 mm. At roughly 6 ps/mm that puts about 32 ns of skew on the transmit pair, against a 25 ns budget for 100BASE-TX. 10/100 links tolerate more skew than the 1000BASE-T number suggests, so this will probably pass at 100BASE-TX, but it is not a spec-compliant pair and it should be fixed before anyone runs this at 1000BASE-TX margin or relies on it in a product. Fixing it means re-routing the J1-to-RN1 span with a length-tuning segment, not moving the W5500 side.
-- **The RJ45 3D model is reconstructed, not vendor CAD.** The KiCad library footprint for `RJ45_HALO_HFJ11-x2450E-LxxRL_Horizontal` points at a 3D model that has never existed in the KiCad 3D model library, locally or upstream. Nobody publishes a STEP for this part. `kicad/3dparts/halo_hfj11_x2450e_lxxrl.step` was generated from Halo's own mechanical drawing by `build_halo_hfj11_model.py`. The envelope dimensions are solid: the 15.88 mm width and 21.59 mm depth in the model reproduce the datasheet callouts exactly and match KiCad's own fab outline. The body height is good to about +/-0.3 mm. The port cavity is the weak spot, at 11.6 x 10.36 mm, proportioned from a different manufacturer's part because Halo does not dimension it. Use it for board-fit and enclosure clearance. Do not use it to model an actual plug mating.
-- **The connector sits 6.1 mm further inboard than Halo recommends.** Halo's drawing calls for the mating face to be 0.429 in (10.90 mm) outboard of the PCB edge, which puts the recommended edge right on the connector's locating pegs. On this board the edge is 4.795 mm outboard of the face instead. That leaves 6.1 mm of 1.6 mm PCB standing in the plug's path. It will not stop a bare RJ45 plug from seating, because the contacts sit 17 mm behind the face, but the plug's overmold can foul that edge and it will be an obvious wall if the board goes in a case. Fix by trimming the left edge to X = 36.1 mm, or by moving J1 6.105 mm toward negative X.
-- **No mounting holes.** The board has no M2 or M3 holes. The only non-plated features are the connector's own two 3.25 mm locating pegs. It mounts in a case by friction or by the connector alone. Adding two M2 holes near the right-hand edge is the first change I would make.
-- **No silkscreen.** Zero board-level text items. No designator overlay, no pin-1 mark on the jack, no board name. The 33 visible reference designators are library footprint outlines, not a legend.
-- **J1 and J2 both raise a `lib_footprint_mismatch` warning** in DRC, and neither one means the board is wrong. I diffed both board footprints against their library copies: every pad, pad coordinate, drill, silkscreen line, fab line, and courtyard line matches. What differs is metadata and the 3D model path. J1's copy points at our reconstructed model instead of the library's dangling reference, which is intentional. Both board copies also carry fuller descriptions and pin names than the copies installed in `/usr/share/kicad/footprints`, because the board was saved from a newer library revision.
-- **ERC reports 3 `power_pin_not_driven` errors** on the +3.3V, GND, and +3.3VA power symbols. There is no regulator and no power-output source on this board by design, so these cannot be cleared without lying to the ERC checker.
-- **The on-board LEDs are dim.** D1 and D2 are driven through 1 kohm from SPDLED and DUPLED, which lands around 0.5-1.3 mA. High-efficiency LED types help. If you need them bright, R2 and R3 are the parts to change.
-- **J1 LED polarity is assumed, not confirmed.** The KiCad symbol leaves pins 9-12 unnamed. The wiring (both anodes on +3.3V) is consistent with the Halo datasheet, but confirm it against the real datasheet before building a batch.
+- The connector sits 6.1 mm further inboard than Halo recommends.
+- No mounting holes
+- No silkscreen
+- The on-board LEDs are dim
 
 ## Credits & Inspiration
 
@@ -181,6 +176,6 @@ Ethernet/
 
 ## License
 
-Released under [CERN-OHL-S-2.0](https://cern.ch/c/ohl-s/2.0) for the hardware, and [MIT](https://opensource.org/licenses/MIT) for the 3D model generator script.
+Released under [CERN-OHL-S-2.0](https://cern.ch/c/ohl-s/2.0) for the hardware
 
 The W5500 and the FastJack are parts from other people. This repository covers the board design and the reconstructed 3D model only.

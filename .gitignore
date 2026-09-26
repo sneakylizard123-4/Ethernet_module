@@ -8,7 +8,6 @@ kicad/.history
 *.kicad_prl
 fp-info-cache
 *.lck
-/kicad/3dparts/build_halo_hfj11_model.py
 
 # Export scratch
 *.tmp
