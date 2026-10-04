@@ -36,7 +36,7 @@ created_at: 2026-09-25
 
 ## What I did:
 
-- 50.0 x 21.4mm, routed all 201 track segments by hand, no autorouter
+- 50.0 x 21.4mm, routed all 201 tracks
 - Went to 4 layers instead of the reference design's 2. Solid GND on In1.Cu, solid +3.3V on In2.Cu
 - Routed all 4 pairs J1 -> RN1 -> U1 as short parallel traces on F.Cu with continuous ground directly underneath
 - 41 through vias, 0.6mm pad / 0.3mm drill, no blind or microvias
