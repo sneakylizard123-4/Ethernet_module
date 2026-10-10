@@ -1,181 +1,86 @@
 # W5500 Ethernet Module
 
-RJ45-to-SPI Ethernet breakout built around the W5500
-
-This board turns a 4-wire SPI bus into a working 10/100 Ethernet port.
-A WIZnet W5500 TCP/IP controller talks to a RJ45 jack over SPI, so the microcontroller never has to touch a packet.
-The Ethernet PHY and the isolation transformer live inside the connector, so there is no line driver, and no magnetics to lay out.
-
-The design follows WIZnet's reference design.
+A small SPI Ethernet breakout for the W5500.
 
 ![Assembled 3D render](images/pcb/assembled-3d.png)
 
-## Custom Features
+## Features
 
-- Four layers, with a solid GND plane on and a solid +3.3V plane.
-- Split analog/digital supply through a ferrite bead
-- Two on-board status LEDs driven from the W5500's SPDLED and DUPLED outputs, plus the connector's own front-panel pair fed by LINKLED and ACTLED.
-- A populated 0 ohm four-element array (RN1) in the differential pairs.
-- It is there for damping, not configuration, and it gives a place to add damping resistors later without respinning the board.
-- Two 3.25 mm NPTH locating pegs land on the connector, so the jack self-aligns to the board outline during assembly.
+- SPI interface
+- 10/100 Ethernet
+- 4-layer board with ground and 3.3V planes
+- Split analog/digital supply with ferrite bead
+- On-board and jack LEDs
+- 25 MHz crystal
 
-## How It Works
+## PCB
 
-| Block | Part | Role |
-|---|---|---|
-| Host interface | J2 (1x08 header) | 3.3V supply in, SPI, chip select, interrupt, reset |
-| Ethernet controller | U1 (W5500, LQFP-48) | TCP/IP offload, MAC, 10/100 PHY |
-| Ethernet magnetics | J1 (HFJ11-2450E-L11RL) | 1:1 transformer + common-mode choke + 2 front-panel LEDs |
-| TX termination | R4, R6 (49.9 ohm) | Source-terminates each leg of the transmit pair |
-| RX isolation | C15, C17 (6.8 nF), R5, R7 (49.9 ohm) | AC-couples the receive pair and matches it to the receive center tap |
-| Center-tap bias | R8 (10 ohm), C16 (22 nF), C14 (10 nF) | Sets the common-mode DC bias on the receive pair |
-| Pair damping | RN1 (0 ohm x4) | Damping/placeholder elements in all four pair legs |
-| Clock | X1 (25 MHz), C9, C12 (18 pF) | W5500 X+ / X- oscillator |
-| Analog decoupling | C2, C3 (10 uF), C7 (4.7 uF), C13 (0.1 uF), C5 (10 nF) | Bulk, TOCAP, AVDD HF, and internal 1.2V LDO output |
-| Reference resistor | R1 (12.4k, 1%) | W5500 EXRES1, sets internal reference |
-| Status | D1, D2 + R2, R3 (1k); R9, R10 (330) | SPDLED/DUPLED on the board, ACTLED/LINKLED at the jack |
+50.0 x 21.4 mm, 4-layer, 1.6 mm FR-4.
 
-### Power Tree
-
-The board has no regulator. It expects a clean 3.3 V on pin 2 of J2 and that is the whole supply.
-
-```
-J2.2  +3.3V  (supply input from host)
- |
- +-- FB1  ferrite bead 120R @ 100MHz
- |     |
- |     +-- +3.3VA
- |           +-- U1 AVDD  pins 4 8 11 15 17 21   (W5500 analog supply)
- |           +-- R4 R6 R8  (TX termination bias, center-tap bias)
- |           +-- C3 10uF  (analog bulk)
- |
- +-- +3.3V
-       +-- U1 VDD  pin 28                        (W5500 digital supply)
-       +-- C2 10uF  (digital bulk)
-       +-- J1 pins 9 11  (jack LED common anodes)
-       +-- R2 R3 1k   (on-board status LEDs)
-
-GND: J2.1, U1 AGND pins 3 9 14 16 19 48, U1 GND pin 29,
-     J1 shield posts, all capacitor returns
-```
-
-- No PoE on this board
-- No level shifting, 3.3v mcu only
-- No onboard regulator
-
-## PCB Design
-
-- 50.0 x 21.4 mm, 4 layers, 1.6 mm FR-4.
-- length matched traces
-
-![Top copper](images/pcb/01-top-copper.png)
-
+![PCB top copper](images/pcb/01-top-copper.png)
 ![Internal planes](images/pcb/04-internal-planes.png)
 
-## Firmware
+## Schematic
 
-W5500 doesn't need firmware
+![Root](images/schematic/01-root.png)
+![Power](images/schematic/02-power.png)
+![RJ45](images/schematic/03-rj45.png)
+![Connector](images/schematic/04-connector.png)
+![W5500](images/schematic/05-w5500.png)
 
-## Usage
+## Pinout
 
-Wire the host to the 8-pin header and the module appears on the network.
+| Pin | Name | Notes |
+|---|---|---|
+| 1 | GND | Ground |
+| 2 | 3.3V | Power in |
+| 3 | SCS | Chip select (active low) |
+| 4 | SCLK | SPI clock |
+| 5 | MISO | SPI MISO |
+| 6 | MOSI | SPI MOSI |
+| 7 | INT | Interrupt (active low) |
+| 8 | RST | Reset (active low) |
 
-| Pin | Function | Direction (host view) | Notes |
-|---|---|---|---|
-| 1 | GND | - | Board ground, tied to the jack shield |
-| 2 | +3.3V | in | Supply input. This board does not regulate. |
-| 3 | SCS | out | Chip select, active low |
-| 4 | SCLK | out | SPI clock |
-| 5 | MISO | in | W5500 -> host |
-| 6 | MOSI | out | Host -> W5500 |
-| 7 | INT | in | Interrupt, active low |
-| 8 | RST | out | Reset, active low |
+## BOM
 
-`LINKLED` and `ACTLED` and are intentionally dim because they are fed through 1 kohm.
-
-![Schematic: RJ45 sheet](images/schematic/02-rj45.png)
-
-## BOM (Bill of Materials)
+| Ref | Value | MPN | Manufacturer | Qty | Unit $ | Ext $ | Supplier Link |
+|-----|-------|-----|--------------|-----|--------|-------|---------------|
+| C1,C4,C6,C8,C10,C11,C13 | 0.1uF 50V X7R 0603 | CL10B104KB8NNNC | Samsung Electro-Mechanics | 7 | 0.0088 | 0.0616 | [LCSC](https://www.lcsc.com/product-detail/Samsung-Electro-Mechanics-CL10B104KB8NNNC_C1591.html) |
+| C9,C12 | 18pF 50V C0G 0603 | 0603N180J500CT | Union Semiconductor | 2 | 0.0069 | 0.0138 | [LCSC](https://www.lcsc.com/product-detail/Union-Semiconductor-0603N180J500CT_C123538.html) |
+| C5,C14 | 10nF 50V X7R 0603 | CL10B103KB8NNNC | Samsung Electro-Mechanics | 2 | 0.0103 | 0.0206 | [LCSC](https://www.lcsc.com/product-detail/Samsung-Electro-Mechanics-CL10B103KB8NNNC_C1589.html) |
+| C15,C17 | 6.8nF 50V X7R 0603 | CL10B682JB8NNNC | Samsung Electro-Mechanics | 2 | 0.0075 | 0.0150 | [LCSC](https://www.lcsc.com/product-detail/Samsung-Electro-Mechanics-CL10B682JB8NNNC_C307492.html) |
+| C16 | 22nF 50V X7R 0603 | CC0603KRX7R9BB223 | Yageo | 1 | 0.0063 | 0.0063 | [LCSC](https://www.lcsc.com/product-detail/YAGEO-CC0603KRX7R9BB223_C106222.html) |
+| C2,C3 | 10uF 10V X5R 0603 | CL10A106KP8NNNC | Samsung Electro-Mechanics | 2 | 0.0322 | 0.0644 | [LCSC](https://www.lcsc.com/product-detail/Samsung-Electro-Mechanics-CL10A106KP8NNNC_C19702.html) |
+| C7 | 4.7uF 10V X5R 0603 | CL10A475KP8NNNC | Samsung Electro-Mechanics | 1 | 0.0164 | 0.0164 | [LCSC](https://www.lcsc.com/product-detail/Samsung-Electro-Mechanics-CL10A475KP8NNNC_C1705.html) |
+| D1,D2 | LED red high-efficiency 0603 | KT-0603R | Keystone Electronics | 2 | 0.0076 | 0.0152 | [LCSC](https://www.lcsc.com/product-detail/Keystone-Electronics-KT-0603R_C2286.html) |
+| FB1 | Ferrite bead 120R 0603 | CBW160808U121T | Sunlord | 1 | 0.0086 | 0.0086 | [LCSC](https://www.lcsc.com/product-detail/Sunlord-CBW160808U121T_C139175.html) |
+| J1 | RJ45 magjack HFJ11-2450E-L11RL | HFJ11-2450E-L11RL | Halo Electronics | 1 | 5.2300 | 5.2300 | [DigiKey](https://www.digikey.com/en/products/detail/halo-electronics-inc/HFJ11-2450E-L11RL/25658121) |
+| J2 | Header 1x08 2.54mm | 2.54-1*8 | CONNFLY Elec | 1 | 0.0442 | 0.0442 | [LCSC](https://www.lcsc.com/product-detail/CONNFLY-Elec-2-54-1-8_C5156616.html) |
+| R1 | 12.4k 1% 0603 | 0603WAF1242T5E | UniRoyal Elec | 1 | 0.0015 | 0.0015 | [LCSC](https://www.lcsc.com/product-detail/UNI-ROYAL-Uniroyal-Elec-0603WAF1242T5E_C22865.html) |
+| R2,R3 | 1k 1% 0603 | 0603WAF1001T5E | UniRoyal Elec | 2 | 0.0026 | 0.0052 | [LCSC](https://www.lcsc.com/product-detail/UNI-ROYAL-Uniroyal-Elec-0603WAF1001T5E_C21190.html) |
+| R4,R5,R6,R7 | 49.9R 1% 0603 | RC0603FR-0749R9L | Yageo | 4 | 0.0062 | 0.0248 | [LCSC](https://www.lcsc.com/product-detail/YAGEO-RC0603FR-0749R9L_C114625.html) |
+| R8 | 10R 1% 0603 | 0603WAF100JT5E | UniRoyal Elec | 1 | 0.0032 | 0.0032 | [LCSC](https://www.lcsc.com/product-detail/UNI-ROYAL-Uniroyal-Elec-0603WAF100JT5E_C22859.html) |
+| R9,R10 | 330R 1% 0603 | 0603WAF3300T5E | UniRoyal Elec | 2 | 0.0026 | 0.0052 | [LCSC](https://www.lcsc.com/product-detail/UNI-ROYAL-Uniroyal-Elec-0603WAF3300T5E_C23138.html) |
+| RN1 | 0R array 0603x4 | 4D03WGJ0000T5E | UniRoyal Elec | 1 | 0.0090 | 0.0090 | [LCSC](https://www.lcsc.com/product-detail/UNI-ROYAL-Uniroyal-Elec-4D03WGJ0000T5E_C1952.html) |
+| U1 | W5500 LQFP-48 | W5500 | WIZnet | 1 | 2.8503 | 2.8503 | [LCSC](https://www.lcsc.com/product-detail/WIZnet-W5500_C32843.html) |
+| X1 | 25MHz 3225 | TXC-7A-25.000MBB-T | TXC Corporation | 1 | 0.0954 | 0.0954 | [LCSC](https://www.lcsc.com/product-detail/TXC-Corp-TXC-7A-25-000MBB-T_C9006.html) |
+| PCB | 50.0x21.4mm 4-layer FR-4 (5 pcs, est.) | - | JLCPCB | 5 | 2.0000 | 10.0000 | [JLCPCB](https://jlcpcb.com/) |
+| **Total (parts per 1 board)** | | | | | | **8.49** | |
+| **Grand total (5 boards: parts + PCBs)** | | | | | | **52.45** | |
 
 Full BOM: [BOM.csv](BOM.csv)
 
-| Item | Cost |
-|---|---|
-| J1 RJ45 magjack (HFJ11-2450E-L11RL, DigiKey) | $5.23 |
-| U1 W5500 LQFP-48 (LCSC) | $2.85 |
-| X1 25 MHz crystal (LCSC) | $0.10 |
-| All remaining parts: 17 capacitors, 2 LEDs, the ferrite bead, 10 resistors, RN1, X1 and the J2 header (LCSC) | $0.32 |
-| **Total parts, 1 board** | **$8.49** |
-| **Total parts, 5 boards** | **$42.45** |
-| PCB, 5x 4-layer FR-4 50 x 21.4 mm (estimate) | ~$10.00 |
-| **Grand total, 5 boards** | **~$52.45** |
-
 ## Production
 
-- All production files are in `kicad/production/`
-- PCB: 50.0 x 21.4 mm, 4-layer, 1.6 mm FR-4, lead-free HASL finish, green soldermask. Gerbers are in `kicad/production/Ethernet.zip`
-- Assembly: 33 SMD parts on the top side plus J1 and J2 through-hole. Everything is on one side, so this is a single-pass reflow followed by hand-soldering the connector and the header.
+Gerbers, drill files, STEP, IPC netlists, and placement files are in `kicad/production/`.
 
-## Repository Structure
+## Known issues
 
-```
-Ethernet/
-|-- BOM.csv                     supplier links and totals
-|-- JOURNAL.md                  build log
-|-- README.md
-|-- .gitignore
-|-- images/
-|   |-- pcb/
-|   |   |-- assembled-3d.png   STEP-derived 3D render
-|   |   |-- 01-top-copper.png
-|   |   |-- 02-top-silkscreen.png
-|   |   |-- 03-bottom.png
-|   |   `-- 04-internal-planes.png
-|   `-- schematic/
-|       |-- 00-top-level.png / .svg
-|       |-- 01-power.png       / .svg
-|       |-- 02-rj45.png        / .svg
-|       |-- 03-connector.png   / .svg
-|       `-- 04-w5500.png       / .svg
-`-- kicad/
-    |-- Ethernet.kicad_pro
-    |-- Ethernet.kicad_sch     root sheet
-    |-- power.kicad_sch        FB1 rail split
-    |-- rj45.kicad_sch         J1 and the magnetics network
-    |-- connector.kicad_sch    J2
-    |-- w5500.kicad_sch         U1, X1, RN1, LEDs
-    |-- Ethernet.kicad_pcb
-    |-- 3dparts/
-    |   |-- halo_hfj11_x2450e_lxxrl.step   reconstructed RJ45 model
-    |   |-- halo_hfj11_x2450e_lxxrl.wrl    VRML fallback
-    |   `-- build_halo_hfj11_model.py      parametric source for the model
-    `-- production/
-        |-- Ethernet.step      STEP AP214 of the populated board
-        |-- Ethernet.zip       Gerber + Excellon + drill map, zipped
-        |-- netlist.ipc        IPC-D-356 netlist
-        |-- positions.csv      pick-and-place
-        |-- designators.csv
-        |-- bom.csv
-        |-- ipc2581/
-        |   `-- Ethernet.xml   IPC-2581 export
-        `-- gerbers/           Gerber + Excellon + drill map
-```
-
-## Known Issues
-
-- The connector sits 6.1 mm further inboard than Halo recommends.
-- No mounting holes
-- No silkscreen
-- The on-board LEDs are dim
-
-## Credits & Inspiration
-
-- WIZnet W5500 "RJ45 with Magnetics" reference design. This board is an implementation of it, not an original Ethernet front end. The W5500 datasheet and hardware design guide set the termination and center-tap values.
-- HALO Electronics for the `HFJ11-2450E-L11RL` FastJack, and for publishing a mechanical drawing detailed enough to build a 3D model from.
-- JLCPCB for the parts library this was designed against, and for a 4-layer stackup at this price.
+- The RJ45 mating face is ~6.1 mm closer to the board center than Halo recommends. Check case clearances.
+- No mounting holes.
 
 ## License
 
-Released under [CERN-OHL-S-2.0](https://cern.ch/c/ohl-s/2.0) for the hardware
+Hardware: CERN-OHL-S-2.0. This covers the board design and the reconstructed 3D model for the magjack.
 
-The W5500 and the FastJack are parts from other people. This repository covers the board design and the reconstructed 3D model only.
+Based on WIZnet's W5500 reference design.
